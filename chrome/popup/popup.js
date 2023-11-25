@@ -23,7 +23,7 @@ function uploadJSON() {
           // Store JSON data (you can use chrome.storage.local or another storage method here)
           chrome.storage.local.set({ 'guidMapping': parsedData }, function () {
             statusDiv.innerText = 'JSON file uploaded and stored.';
-            console.log(parsedData);
+            updateStoredItem();
           });
         } else {
           statusDiv.innerText = 'JSON file must contain a "mapping" field in the root.';
@@ -43,8 +43,9 @@ function updateStoredItem() {
   var statusDiv = document.getElementById('storedItem');
 
   chrome.storage.local.get('guidMapping', function (data) {
-    if (data) {
-      statusDiv.innerText = JSON.stringify(data.guidMapping);
+    if (data && data.guidMapping && data.guidMapping.mapping) {
+      var mappingLength = Object.keys(data.guidMapping.mapping).length;
+      statusDiv.innerText = JSON.stringify(data.guidMapping.identifier) + " ("+ JSON.stringify(data.guidMapping.creationDate) + ", v" + JSON.stringify(data.guidMapping.fileVersion) + "): " + mappingLength + " entries";
     } else {
       statusDiv.innerText = 'No data stored.';
     }

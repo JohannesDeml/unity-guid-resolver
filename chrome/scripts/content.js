@@ -8,7 +8,7 @@ function getModifiedContent(originalContent) {
   var modifiedContent = originalContent.replace(guidRegex, function (match) {
     var replacement = guidLookup[match];
     if (replacement) {
-      return match + " (" + replacement + ")";
+      return match + " (" + replacement.fileName + ")";
     } else {
       return match + " (No matching GUID found)";
     }
@@ -52,13 +52,15 @@ function addGuidLabels() {
   console.log("Found " + matchCount + " matches" + " in " + nodeCount + " nodes (duration: " + (performance.now() - startTime) + " ms)");
 }
 
-chrome.storage.local.get('guidMapping', function (data) {
-  if (data) {
-    console.log("Found guid mapping from " + JSON.stringify(data.guidMapping.creationDate));
-    guidLookup = data.guidMapping.mapping;
-  } else {
-    console.log('No guid mapping stored');
-  }
-  // Call the function delayed after the page is loaded
-  setTimeout(addGuidLabels, 1000);
+addEventListener("load", (event) => {
+  chrome.storage.local.get('guidMapping', function (data) {
+    if (data) {
+      console.log("Found guid mapping from " + JSON.stringify(data.guidMapping.creationDate));
+      guidLookup = data.guidMapping.mapping;
+    } else {
+      console.log('No guid mapping stored');
+    }
+    // Call adding labels with a small delay to make sure everything is set up
+    setTimeout(addGuidLabels, 500);
+  });
 });
