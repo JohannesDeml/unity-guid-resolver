@@ -53,6 +53,7 @@ function addGuidLabels() {
   console.log("Found " + matchCount + " matches" + " in " + nodeCount + " nodes (duration: " + (performance.now() - startTime) + " ms)");
 }
 
+// Add listener to run the script when the page is loaded
 addEventListener("load", (event) => {
   chrome.storage.local.get('guidMapping', function (data) {
     if (data) {
@@ -64,4 +65,12 @@ addEventListener("load", (event) => {
     // Call adding labels with a small delay to make sure everything is set up
     setTimeout(addGuidLabels, 500);
   });
+});
+
+// Add listener to run the script when the url is updated
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+  if (request.message === "addGuidLabels") {
+    setTimeout(addGuidLabels, 500);
+    sendResponse({message: "Labels added"});
+  }
 });

@@ -13,7 +13,15 @@
   "action": {
     "default_popup": "popup/popup.html"
   },
-  "permissions": ["storage", "activeTab"],
+  "permissions": ["storage", "activeTab", "tabs", "scripting"],
+  "host_permissions": [
+    "https://github.com/*",
+    "https://gitlab.com/*",
+    "https://bitbucket.org/*"
+  ],
+  "background": {
+    "service_worker": "scripts/background.js"
+  },
   "content_scripts": [
     {
       "js": ["scripts/content.js"],
