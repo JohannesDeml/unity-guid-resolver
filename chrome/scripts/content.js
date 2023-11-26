@@ -1,5 +1,6 @@
 // Define the regex pattern for GUIDs
 const guidRegex = /\b([a-fA-F0-9]{32})\b/g;
+var guidLoaded = false;
 
 // Will be updated with stored guid mapping, if set in local storage
 var guidLookup = {};
@@ -17,6 +18,29 @@ function getModifiedContent(originalContent) {
 }
 
 function addGuidLabels() {
+  if(guidLoaded) {
+    runGuidReplacerDelayed();
+    return;
+  }
+
+  chrome.storage.local.get('guidMapping', function (data) {
+    if (data) {
+      console.log("Found guid mapping from " + JSON.stringify(data.guidMapping.creationDate));
+      guidLookup = data.guidMapping.mapping;
+    } else {
+      console.log('No guid mapping stored');
+    }
+    guidLoaded = true;
+    runGuidReplacerDelayed();
+  });
+}
+
+function runGuidReplacerDelayed() {
+  // Call adding labels with a small delay to make sure everything is set up
+  setTimeout(runGuidReplacer, 500);
+}
+
+function runGuidReplacer() {
   console.log("Running unity guid replacer");
   var matchCount = 0;
   var nodeCount = 0;
@@ -53,24 +77,26 @@ function addGuidLabels() {
   console.log("Found " + matchCount + " matches" + " in " + nodeCount + " nodes (duration: " + (performance.now() - startTime) + " ms)");
 }
 
-// Add listener to run the script when the page is loaded
-addEventListener("load", (event) => {
-  chrome.storage.local.get('guidMapping', function (data) {
-    if (data) {
-      console.log("Found guid mapping from " + JSON.stringify(data.guidMapping.creationDate));
-      guidLookup = data.guidMapping.mapping;
-    } else {
-      console.log('No guid mapping stored');
-    }
-    // Call adding labels with a small delay to make sure everything is set up
-    setTimeout(addGuidLabels, 500);
-  });
-});
-
 // Add listener to run the script when the url is updated
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   if (request.message === "addGuidLabels") {
-    setTimeout(addGuidLabels, 500);
+    addGuidLabels();
     sendResponse({message: "Labels added"});
   }
 });
+
+function initIfMatchingDomain()
+{
+  var url = window.location.href;
+  if(url.indexOf("git") == -1 &&
+    url.indexOf("bitbucket") == -1) {
+    return;
+  }
+
+  // Add listener to run the script when the page is loaded
+  addEventListener("load", (event) => {
+    addGuidLabels();
+  });
+}
+
+initIfMatchingDomain();

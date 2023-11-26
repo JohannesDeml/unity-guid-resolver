@@ -14,22 +14,14 @@
     "default_popup": "popup/popup.html"
   },
   "permissions": ["storage", "activeTab", "tabs", "scripting"],
-  "host_permissions": [
-    "https://github.com/*",
-    "https://gitlab.com/*",
-    "https://bitbucket.org/*"
-  ],
+  "host_permissions": ["<all_urls>" ],
   "background": {
     "service_worker": "scripts/background.js"
   },
   "content_scripts": [
     {
       "js": ["scripts/content.js"],
-      "matches": [
-        "https://github.com/*",
-        "https://gitlab.com/*",
-        "https://bitbucket.org/*"
-      ]
+      "matches": ["<all_urls>"]
     }
   ]
 }
