@@ -1,6 +1,6 @@
 # Unity GUID Resolver
 
-![Logo](./icon/icon.svg)
+![Logo](./docs/preview.png)
 
 *Resolve GUIDs to their asset names on the web - useful for PR reviews*  
 
