@@ -24,15 +24,17 @@ function addGuidLabels() {
   // Function to process a text node and add labels to GUIDs
   function processTextNode(node) {
     var originalContent = node.nodeValue;
-    var modifiedContent = getModifiedContent(originalContent);
+    // Skip nodes that are too short to contain a GUID
+    if (!originalContent || originalContent.length < 32) {
+      return;
+    }
 
+    var modifiedContent = getModifiedContent(originalContent);
     if (originalContent !== modifiedContent) {
       matchCount++;
-      if (node.parentNode !== null) {
-        var newNode = document.createTextNode(modifiedContent);
-        node.parentNode.replaceChild(newNode, node);
-      }
+      node.nodeValue = modifiedContent;
     }
+    nodeCount++;
   }
 
   // Recursive function to traverse all text nodes in an element
@@ -41,7 +43,6 @@ function addGuidLabels() {
 
     while (treeWalker.nextNode()) {
       processTextNode(treeWalker.currentNode);
-      nodeCount++;
     }
   }
 
