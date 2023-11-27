@@ -49,7 +49,7 @@ function updateStoredItem() {
   chrome.storage.local.get('guidMapping', function (data) {
     if (data && data.guidMapping && data.guidMapping.mapping) {
       var mappingLength = Object.keys(data.guidMapping.mapping).length;
-      statusDiv.innerText = JSON.stringify(data.guidMapping.identifier) + " ("+ JSON.stringify(data.guidMapping.creationDate) + ", v" + JSON.stringify(data.guidMapping.fileVersion) + "): " + mappingLength + " entries";
+      statusDiv.innerHTML = data.guidMapping.identifier + " - " + data.guidMapping.creationDate + "<br>" + mappingLength + " entries";
     } else {
       statusDiv.innerText = 'No data stored.';
     }

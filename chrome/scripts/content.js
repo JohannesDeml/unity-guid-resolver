@@ -38,10 +38,8 @@ function runGuidReplacer() {
     var originalContent = node.nodeValue;
     var modifiedContent = originalContent.replace(guidRegex, function (match) {
       var replacement = guidLookup[match];
-      if(!replacement) {
-        replacement = "No matching GUID found";
-      }
-      return match + '<span class="guidResolverTag">[' + replacement.fileName + ']</span>';
+      var tagText = replacement ? replacement.fileName : "No matching GUID found";
+      return match + '<span class="guidResolverTag">[' + tagText + ']</span>';
     });
     if (originalContent !== modifiedContent) {
       matchCount++;

@@ -3,6 +3,31 @@
 
 <head>
   <title>Unity GUID Resolver</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 8px;
+      min-width: 250px;
+    }
+    h3 {
+      color: #333;
+    }
+    #storedItem, #status {
+      margin-bottom: 8px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 4px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 4px;
+    }
+    button:hover {
+      background-color: #57a045;
+    }
+  </style>
 </head>
 
 <body>
@@ -11,6 +36,7 @@
   <input type="file" id="jsonFile" accept=".json">
   <button id="uploadButton">Select</button>
   <div id="status"></div>
+
   <h3>Page tools</h3>
   <button id="updatePageButton">Update Labels</button>
   <script src="popup.js"></script>
