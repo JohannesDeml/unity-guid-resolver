@@ -5,18 +5,6 @@ var guidLoaded = false;
 // Will be updated with stored guid mapping, if set in local storage
 var guidLookup = {};
 
-function getModifiedContent(originalContent) {
-  var modifiedContent = originalContent.replace(guidRegex, function (match) {
-    var replacement = guidLookup[match];
-    if (replacement) {
-      return match + " (" + replacement.fileName + ")";
-    } else {
-      return match + " (No matching GUID found)";
-    }
-  });
-  return modifiedContent;
-}
-
 function addGuidLabels() {
   if(guidLoaded) {
     runGuidReplacerDelayed();
@@ -48,15 +36,19 @@ function runGuidReplacer() {
   // Function to process a text node and add labels to GUIDs
   function processTextNode(node) {
     var originalContent = node.nodeValue;
-    // Skip nodes that are too short to contain a GUID
-    if (!originalContent || originalContent.length < 32) {
-      return;
-    }
-
-    var modifiedContent = getModifiedContent(originalContent);
+    var modifiedContent = originalContent.replace(guidRegex, function (match) {
+      var replacement = guidLookup[match];
+      if(!replacement) {
+        replacement = "No matching GUID found";
+      }
+      return match + '<span class="guidResolverTag">[' + replacement.fileName + ']</span>';
+    });
     if (originalContent !== modifiedContent) {
       matchCount++;
-      node.nodeValue = modifiedContent;
+      node.nodeValue = '';
+      var span = document.createElement('span');
+      span.innerHTML = modifiedContent;
+      node.parentNode.replaceChild(span, node);
     }
     nodeCount++;
   }
@@ -65,13 +57,31 @@ function runGuidReplacer() {
   function traverseTextNodes(element) {
     var treeWalker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null, false);
 
+    // Cache all nodes to be able to add nodes while traversing
+    var textNodes = [];
     while (treeWalker.nextNode()) {
-      processTextNode(treeWalker.currentNode);
+      var node = treeWalker.currentNode;
+      // Skip nodes that are too short to contain a GUID
+      if (!node.nodeValue || node.nodeValue.length < 32) {
+        continue;
+      }
+      textNodes.push(treeWalker.currentNode);
     }
+
+    textNodes.forEach(function(node) {
+      processTextNode(node);
+    });
   }
 
   // measure time
   var startTime = performance.now();
+
+  // Remove all old labels
+  var elements = document.querySelectorAll('span.guidResolverTag');
+  for(var i = 0; i < elements.length; i++){
+    elements[i].parentNode.removeChild(elements[i]);
+  }
+
   // Traverse all text nodes in the document body
   traverseTextNodes(document.body);
   console.log("Found " + matchCount + " matches" + " in " + nodeCount + " nodes (duration: " + (performance.now() - startTime) + " ms)");

@@ -3,6 +3,9 @@ updateStoredItem();
 document.addEventListener('DOMContentLoaded', function () {
   var uploadButton = document.getElementById('uploadButton');
   uploadButton.addEventListener('click', uploadJSON);
+
+  var updatePageButton = document.getElementById('updatePageButton');
+  updatePageButton.addEventListener('click', updateLabelsOnPage);
 });
 
 function uploadJSON() {
@@ -16,13 +19,14 @@ function uploadJSON() {
     reader.onload = function (e) {
       var jsonData = e.target.result;
       try {
+        statusDiv.innerText = 'Parsing JSON file...';
         var parsedData = JSON.parse(jsonData);
 
         // Check if the parsed data contains a "mapping" field in the root
         if (parsedData && parsedData.hasOwnProperty('mapping')) {
           // Store JSON data (you can use chrome.storage.local or another storage method here)
           chrome.storage.local.set({ 'guidMapping': parsedData }, function () {
-            statusDiv.innerText = 'JSON file uploaded and stored.';
+            statusDiv.innerText = 'JSON file updated';
             updateStoredItem();
           });
         } else {
@@ -49,6 +53,13 @@ function updateStoredItem() {
     } else {
       statusDiv.innerText = 'No data stored.';
     }
+  });
+}
+
+function updateLabelsOnPage() {
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    var activeTab = tabs[0];
+    chrome.tabs.sendMessage(activeTab.id, { message: "addGuidLabels" }, function (response) { });
   });
 }
 
