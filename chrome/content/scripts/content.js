@@ -1,5 +1,6 @@
 // Define the regex pattern for GUIDs
-const guidRegex = /\b([a-fA-F0-9]{32})\b/g;
+const guidRegex = /\b([a-f0-9]{32})\b/g;
+const invalidGuid = "00000000000000000000000000000000";
 var guidLoaded = false;
 
 // Will be updated with stored guid mapping, if set in local storage
@@ -37,6 +38,10 @@ function runGuidReplacer() {
   function processTextNode(node) {
     var originalContent = node.nodeValue;
     var modifiedContent = originalContent.replace(guidRegex, function (match) {
+      if (match === invalidGuid) {
+        return match;
+      }
+
       var replacement = guidLookup[match];
       var tagText = replacement ? replacement.fileName : "No matching GUID found";
       return match + '<span class="guidResolverTag">[' + tagText + ']</span>';

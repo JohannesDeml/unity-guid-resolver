@@ -9,12 +9,16 @@
       padding: 8px;
       min-width: 250px;
     }
+
     h3 {
       color: #333;
     }
-    #storedItem, #status {
+
+    #storedItem,
+    #status {
       margin-bottom: 8px;
     }
+
     button {
       background-color: #4CAF50;
       color: white;
@@ -24,14 +28,32 @@
       cursor: pointer;
       margin-top: 4px;
     }
+
     button:hover {
       background-color: #57a045;
+    }
+
+    .cog {
+      color: #333;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .cog:hover {
+      color: #57ae41;
+      background-color: white;
     }
   </style>
 </head>
 
 <body>
   <h3>GUID Mapping</h3>
+  <button id="optionsButton" class="cog">&#9881;</button>
   <div id="storedItem"></div>
   <input type="file" id="jsonFile" accept=".json">
   <button id="uploadButton">Select</button>

@@ -3,9 +3,6 @@ updateStoredItem();
 document.addEventListener('DOMContentLoaded', function () {
   var uploadButton = document.getElementById('uploadButton');
   uploadButton.addEventListener('click', uploadJSON);
-
-  var updatePageButton = document.getElementById('updatePageButton');
-  updatePageButton.addEventListener('click', updateLabelsOnPage);
 });
 
 function uploadJSON() {
@@ -55,11 +52,3 @@ function updateStoredItem() {
     }
   });
 }
-
-function updateLabelsOnPage() {
-  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-    var activeTab = tabs[0];
-    chrome.tabs.sendMessage(activeTab.id, { message: "addGuidLabels" }, function (response) { });
-  });
-}
-
