@@ -29,6 +29,8 @@ This repo is experimental and was created out of the need to have a better exper
 
 ## Setup
 
+[![Setup and Demo video](https://i.imgur.com/uECrI0G.png)](https://www.youtube.com/watch?v=Cek_NIIUSBI)
+
 1. Add the Unity package to your project, there are several possibilities how to do so:
    1. Install through OpenUpm: `openupm add com.jd.guidresolver`
    2. Add in the package manager: `https://github.com/JohannesDeml/unity-guid-resolver.git#1.0.0`
