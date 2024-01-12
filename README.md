@@ -2,6 +2,8 @@
 
 ![Logo](./docs/preview.png)
 
+[![Get GUID Resolver for chrome](https://storage.googleapis.com/web-dev-uploads/image/WlD8wC6g8khYWPJUsQceQkhXSlv1/UV4C4ybeBTsZt43U4xis.png)](https://chromewebstore.google.com/detail/unity-guid-resolver/gjeokenlchlhgjnnaolbemkcmdigpnjd)
+
 [![](https://img.shields.io/github/release-date/JohannesDeml/unity-guid-resolver.svg)](https://github.com/JohannesDeml/unity-guid-resolver/releases) [![openupm](https://img.shields.io/npm/v/com.jd.guidresolver?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.jd.guidresolver/)
 
 *Resolve GUIDs to their asset names on the web* 
@@ -17,7 +19,7 @@ This repo is experimental and was created out of the need to have a better exper
 
 ### Supported Browsers
 
-- [x] Chrome
+- [x] [Chrome](https://chromewebstore.google.com/detail/unity-guid-resolver/gjeokenlchlhgjnnaolbemkcmdigpnjd)
 - [ ] Firefox
 - [ ] Safari
 
@@ -29,18 +31,29 @@ This repo is experimental and was created out of the need to have a better exper
 
 ## Setup
 
-[![Setup and Demo video](https://i.imgur.com/uECrI0G.png)](https://www.youtube.com/watch?v=Cek_NIIUSBI)
+### Unity Setup
 
 1. Add the Unity package to your project, there are several possibilities how to do so:
    1. Install through OpenUpm: `openupm add com.jd.guidresolver`
    2. Add in the package manager: `https://github.com/JohannesDeml/unity-guid-resolver.git#1.0.0`
    3. Download the package from the [releases](https://github.com/JohannesDeml/unity-guid-resolver/releases/) and import it through `Assets > Import Package` 
 2. Export the guids lookup file by running the menu item `Assets > Generate GUID Mapping`. The file will be exported to `UnityProjectFolderRoot/Builds/guid-mapping.json`
-3. Download the chrome extension folder from the [releases](https://github.com/JohannesDeml/unity-guid-resolver/releases/) and unpack the zip or clone the project
-4. In Chrome, go to the extensions and enable the developer mode
-5. Select Load unpacked and point to the chrome folder you downloaded
-6. Select the extension in your browser menu bar and click on select to choose a mapping file you want to use - Select the one that you generated in step 2.
-7. Reload your current page - If you can't see any mapping applied you can use the `Update Labels` button in the extension popup.
+
+### Chrome Setup from store
+
+1. Install the chrome extension from [here](https://chromewebstore.google.com/detail/unity-guid-resolver/gjeokenlchlhgjnnaolbemkcmdigpnjd)
+2. Select the extension in your browser menu bar and click on select to choose a mapping file you want to use - Select the one that you generated in step 2.
+3. Reload your current page - If you can't see any mapping applied you can use the `Update Labels` button in the extension popup.
+
+### Chrome Setup from Source
+
+1. Download the chrome extension folder from the [releases](https://github.com/JohannesDeml/unity-guid-resolver/releases/) and unpack the zip or clone the project
+2. In Chrome, go to the extensions and enable the developer mode
+3. Select Load unpacked and point to the chrome folder you downloaded
+4. Select the extension in your browser menu bar and click on select to choose a mapping file you want to use - Select the one that you generated in step 2.
+5. Reload your current page - If you can't see any mapping applied you can use the `Update Labels` button in the extension popup.
+
+[![Setup and Demo video](https://i.imgur.com/uECrI0G.png)](https://www.youtube.com/watch?v=Cek_NIIUSBI)
 
 ## License
 
