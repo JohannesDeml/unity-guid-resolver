@@ -35,8 +35,8 @@ This repo is experimental and was created out of the need to have a better exper
 
 1. Add the Unity package to your project, there are several possibilities how to do so:
    1. Install through OpenUpm: `openupm add com.jd.guidresolver`
-   2. Add in the package manager: `https://github.com/JohannesDeml/unity-guid-resolver.git#1.0.0`
-   3. Download the package from the [releases](https://github.com/JohannesDeml/unity-guid-resolver/releases/) and import it through `Assets > Import Package` 
+   2. **OR** Add in the package manager: `https://github.com/JohannesDeml/unity-guid-resolver.git?path=/unity#1.0.0`
+   3. **OR** Download the package from the [releases](https://github.com/JohannesDeml/unity-guid-resolver/releases/) and import it through `Assets > Import Package` 
 2. Export the guids lookup file by running the menu item `Assets > Generate GUID Mapping`. The file will be exported to `UnityProjectFolderRoot/Builds/guid-mapping.json`
 
 ### Chrome Setup from store
