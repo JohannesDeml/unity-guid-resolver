@@ -3,7 +3,12 @@
   "name": "Unity GUID Resolver",
   "version": "1.0",
   "description": "Resolve GUIDs from a unity project to their asset names",
-
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "unityguidresolver@deml.io",
+      "strict_min_version": "42.0"
+    }
+  },
   "icons": {
     "16": "images/icon-16.png",
     "32": "images/icon-32.png",
@@ -22,7 +27,8 @@
     "storage",
     "activeTab",
     "tabs",
-    "scripting"],
+    "scripting"
+  ],
   "background": {
     "scripts": ["scripts/background.js"]
   },

@@ -6,7 +6,7 @@
 
 [![](https://img.shields.io/github/release-date/JohannesDeml/unity-guid-resolver.svg)](https://github.com/JohannesDeml/unity-guid-resolver/releases) [![openupm](https://img.shields.io/npm/v/com.jd.guidresolver?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.jd.guidresolver/)
 
-*Resolve GUIDs to their asset names on the web* 
+*Resolve GUIDs to their asset names on the web*
 
 This repo is experimental and was created out of the need to have a better experience doing PR reviews of unity assets. Since GUIDs are not easily readable, adding information on the asset name it is actually liking to gives a lot more context on changes.
 
@@ -20,7 +20,7 @@ This repo is experimental and was created out of the need to have a better exper
 ### Supported Browsers
 
 - [x] [Chrome](https://chromewebstore.google.com/detail/unity-guid-resolver/gjeokenlchlhgjnnaolbemkcmdigpnjd)
-- [ ] Firefox
+- [ ] Firefox (Currently working on it)
 - [ ] Safari
 
 ### Supported Pages
@@ -36,7 +36,7 @@ This repo is experimental and was created out of the need to have a better exper
 1. Add the Unity package to your project, there are several possibilities how to do so:
    1. Install through OpenUpm: `openupm add com.jd.guidresolver`
    2. **OR** Add in the package manager: `https://github.com/JohannesDeml/unity-guid-resolver.git?path=/unity#1.0.0`
-   3. **OR** Download the package from the [releases](https://github.com/JohannesDeml/unity-guid-resolver/releases/) and import it through `Assets > Import Package` 
+   3. **OR** Download the package from the [releases](https://github.com/JohannesDeml/unity-guid-resolver/releases/) and import it through `Assets > Import Package`
 2. Export the guids lookup file by running the menu item `Assets > Generate GUID Mapping`. The file will be exported to `UnityProjectFolderRoot/Builds/guid-mapping.json`
 
 ### Chrome Setup from store
