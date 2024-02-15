@@ -14,7 +14,7 @@
     "default_popup": "content/popup/popup.html"
   },
   "options_ui": {
-    "page": "content/options/options.html",
+    "page": "content/popup/popup.html",
     "open_in_tab": true
   },
   "permissions": ["storage", "activeTab", "tabs", "scripting"],

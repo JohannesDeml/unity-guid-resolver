@@ -20,10 +20,15 @@ document.addEventListener('DOMContentLoaded', function () {
 function uploadJSON() {
   var fileInput = document.getElementById('jsonFile');
   var statusDiv = document.getElementById('status');
+  var uploadButton = document.getElementById('uploadButton');
 
   if (fileInput.files.length > 0) {
     var file = fileInput.files[0];
     var reader = new FileReader();
+
+    statusDiv.innerText = 'Loading JSON file...';
+    uploadButton.disabled = true;
+    uploadButton.classList.add('disabled');
 
     reader.onload = function (e) {
       var jsonData = e.target.result;
@@ -44,6 +49,8 @@ function uploadJSON() {
       } catch (error) {
         statusDiv.innerText = 'Error parsing JSON file: ' + error.message;
       }
+      uploadButton.disabled = false;
+      uploadButton.classList.remove('disabled');
     };
 
     reader.readAsText(file);
