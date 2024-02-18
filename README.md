@@ -2,7 +2,7 @@
 
 ![Logo](./docs/preview.png)
 
-[![Get GUID Resolver for chrome](https://storage.googleapis.com/web-dev-uploads/image/WlD8wC6g8khYWPJUsQceQkhXSlv1/UV4C4ybeBTsZt43U4xis.png)](https://chromewebstore.google.com/detail/unity-guid-resolver/gjeokenlchlhgjnnaolbemkcmdigpnjd)
+[![Get GUID Resolver for chrome](https://storage.googleapis.com/web-dev-uploads/image/WlD8wC6g8khYWPJUsQceQkhXSlv1/UV4C4ybeBTsZt43U4xis.png)](https://chromewebstore.google.com/detail/unity-guid-resolver/gjeokenlchlhgjnnaolbemkcmdigpnjd) [![Get GUID Resolver for firefox](https://extensionworkshop.com/assets/img/documentation/publish/get-the-addon-178x60px.dad84b42.png)](https://addons.mozilla.org/en-US/firefox/addon/unity-guid-resolver/)
 
 [![](https://img.shields.io/github/release-date/JohannesDeml/unity-guid-resolver.svg)](https://github.com/JohannesDeml/unity-guid-resolver/releases) [![openupm](https://img.shields.io/npm/v/com.jd.guidresolver?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.jd.guidresolver/)
 
@@ -20,7 +20,7 @@ This repo is experimental and was created out of the need to have a better exper
 ### Supported Browsers
 
 - [x] [Chrome](https://chromewebstore.google.com/detail/unity-guid-resolver/gjeokenlchlhgjnnaolbemkcmdigpnjd)
-- [ ] Firefox (Currently working on it)
+- [x] [Firefox](https://addons.mozilla.org/en-US/firefox/addon/unity-guid-resolver/)
 - [ ] Safari
 
 ### Supported Pages
@@ -39,9 +39,9 @@ This repo is experimental and was created out of the need to have a better exper
    3. **OR** Download the package from the [releases](https://github.com/JohannesDeml/unity-guid-resolver/releases/) and import it through `Assets > Import Package`
 2. Export the guids lookup file by running the menu item `Assets > Generate GUID Mapping`. The file will be exported to `UnityProjectFolderRoot/Builds/guid-mapping.json`
 
-### Chrome Setup from store
+### Browser Setup from Stores
 
-1. Install the chrome extension from [here](https://chromewebstore.google.com/detail/unity-guid-resolver/gjeokenlchlhgjnnaolbemkcmdigpnjd)
+1. Install the chrome extension from [Chrome WebStore](https://chromewebstore.google.com/detail/unity-guid-resolver/gjeokenlchlhgjnnaolbemkcmdigpnjd) / [Firefox Add-Ons](https://addons.mozilla.org/en-US/firefox/addon/unity-guid-resolver/)
 2. Select the extension in your browser menu bar and click on select to choose a mapping file you want to use - Select the one that you generated in step 2.
 3. Reload your current page - If you can't see any mapping applied you can use the `Update Labels` button in the extension popup.
 
