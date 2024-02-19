@@ -151,9 +151,12 @@ function runGuidReplacer() {
     elements[i].parentNode.removeChild(elements[i]);
   }
 
-  // Traverse all text nodes in the document body
+  // Traverse all potential nodes in the document body
   traverseTextNodes(document.body);
-  traverseDataCodeTextElements(document.body);
+  if (window.location.hostname === "github.com") {
+    // Additionally traverse all special github elements with data-code-text attribute
+    traverseDataCodeTextElements(document.body);
+  }
 
   console.log("Found " + matchCount + " matches" + " in " + nodeCount + " nodes (duration: " + (performance.now() - startTime) + " ms)");
 }

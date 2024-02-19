@@ -25,7 +25,7 @@ This repo is experimental and was created out of the need to have a better exper
 
 ### Supported Pages
 
-- [ ] github
+- [x] github (reads special `data-code-text` attributes)
 - [x] gitlab
 - [x] bitbucket server
 
