@@ -9,8 +9,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using UnityEditor;
@@ -20,47 +18,6 @@ using Debug = UnityEngine.Debug;
 namespace JD.GuidResolver.Editor
 {
 	/// <summary>
-	/// Class structure that will be used to serialize the mapping to json
-	/// </summary>
-	[Serializable]
-	public class GuidMapping
-	{
-		/// <summary>
-		/// Product name of the project to give context in the extension what mapping is loaded
-		/// </summary>
-		public string identifier;
-		/// <summary>
-		/// Sortable date string when the mapping was created
-		/// </summary>
-		public string creationDate;
-		/// <summary>
-		/// File version can be used to check if the mapping is compatible with the extension
-		/// </summary>
-		public int fileVersion;
-		/// <summary>
-		/// The actual mapping of GUIDs to file meta data
-		/// </summary>
-		public Dictionary<string, GuidMappingEntry> mapping;
-
-		public GuidMapping()
-		{
-			identifier = Application.productName;
-			creationDate = DateTime.Now.ToString("s");
-			fileVersion = GuidMappingGenerator.FileVersion;
-			mapping = new Dictionary<string, GuidMappingEntry>();
-		}
-	}
-
-	/// <summary>
-	/// Metadata of a guid mapping - Keep this class small to avoid size explosion of the json file
-	/// </summary>
-	[Serializable]
-	public class GuidMappingEntry
-	{
-		public string fileName;
-	}
-
-	/// <summary>
 	/// Generate a mapping of all GUIDs in the project to their file meta data
 	/// Used for resolving GUIDs in the web with the extension Unity GUID Resolver
 	/// </summary>
@@ -68,12 +25,12 @@ namespace JD.GuidResolver.Editor
 	{
 		public const int FileVersion = 1;
 
-		[MenuItem("Assets/Generate GUID Mapping")]
+		[MenuItem("Assets/Generate Full GUID Mapping")]
 		public static void GenerateGuidMappingMenuItem()
 		{
 			try
 			{
-				if (!GenerateGuidMapping())
+				if (!GenerateGuidMapping("*"))
 				{
 					Debug.Log("Canceled GUID Mapping generation");
 				}
@@ -84,16 +41,16 @@ namespace JD.GuidResolver.Editor
 			}
 		}
 
-		private static bool GenerateGuidMapping()
+		public static bool GenerateGuidMapping(string searchPattern)
 		{
 			Stopwatch sw = Stopwatch.StartNew();
-			var mapping = new GuidMapping();
+			var mapping = new GuidMapping(Application.productName);
 			if (EditorUtility.DisplayCancelableProgressBar("Generating GUID Mapping", "Collecting GUIDs", 0f))
 			{
 				return false;
 			}
 
-			var guids = AssetDatabase.FindAssets("*");
+			var guids = AssetDatabase.FindAssets(searchPattern);
 			for (var i = 0; i < guids.Length; i++)
 			{
 				if (i % 100 == 0)
@@ -130,7 +87,7 @@ namespace JD.GuidResolver.Editor
 				serializer.Serialize(file, mapping);
 			}
 
-			Debug.Log($"Generated mapping for {guids.Length} assets at {filePath} in {sw.ElapsedMilliseconds}ms");
+			Debug.Log($"Generated mapping for {guids.Length} assets in {sw.ElapsedMilliseconds}ms - saved to {filePath}");
 			return true;
 		}
 	}
