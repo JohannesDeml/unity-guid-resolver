@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Unity GUID Resolver",
-  "version": "1.0",
+  "version": "1.1.0",
   "description": "Resolve GUIDs from a unity project to their asset names",
 
   "icons": {
