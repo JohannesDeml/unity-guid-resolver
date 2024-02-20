@@ -1,6 +1,6 @@
 # Unity GUID Resolver
 
-![Logo](./docs/preview.png)
+[![Logo](./docs/preview.png)](https://youtu.be/3Fez_18Jpds)
 
 [![Get GUID Resolver for chrome](https://storage.googleapis.com/web-dev-uploads/image/WlD8wC6g8khYWPJUsQceQkhXSlv1/UV4C4ybeBTsZt43U4xis.png)](https://chromewebstore.google.com/detail/unity-guid-resolver/gjeokenlchlhgjnnaolbemkcmdigpnjd) [![Get GUID Resolver for firefox](https://extensionworkshop.com/assets/img/documentation/publish/get-the-addon-178x60px.dad84b42.png)](https://addons.mozilla.org/en-US/firefox/addon/unity-guid-resolver/)
 
@@ -52,6 +52,10 @@ This repo is experimental and was created out of the need to have a better exper
 3. Select Load unpacked and point to the chrome folder you downloaded
 4. Select the extension in your browser menu bar and click on select to choose a mapping file you want to use - Select the one that you generated in step 2.
 5. Reload your current page - If you can't see any mapping applied you can use the `Update Labels` button in the extension popup.
+
+## Troubleshooting
+* For firefox you can't upload the json in the popup, click the cog in the top right of the popup to open it in a new tab. This tab won't close.
+* For firfox, the addon will ask for permission every time you open a webpage. You can right-click on the addon to allow the addon for all content of the currently open domain
 
 [![Setup and Demo video](https://i.imgur.com/uECrI0G.png)](https://www.youtube.com/watch?v=Cek_NIIUSBI)
 
