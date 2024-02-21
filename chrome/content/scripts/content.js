@@ -1,6 +1,17 @@
+// If the domain contains any of these strings, the script will be run
+const gitUrls = [
+  "git",
+  "bitbucket",
+  "codeberg",
+  "sourceforge",
+  "gogs",
+];
+
 // Define the regex pattern for GUIDs
 const guidRegex = /\b([a-f0-9]{32})\b/g;
 const invalidGuid = "00000000000000000000000000000000";
+
+// Will be set to true when the guid mapping is loaded
 var guidLoaded = false;
 
 // Will be updated with stored guid mapping, if set in local storage
@@ -172,8 +183,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 function initIfMatchingDomain()
 {
   var url = window.location.href;
-  if(url.indexOf("git") == -1 &&
-    url.indexOf("bitbucket") == -1) {
+  if (!gitUrls.some(urlPart => url.includes(urlPart))) {
+    // No git indicator in the url, don't run the script automatically
     return;
   }
 
