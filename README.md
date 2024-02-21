@@ -57,8 +57,6 @@ This repo is experimental and was created out of the need to have a better exper
 * For firefox you can't upload the json in the popup, click the cog in the top right of the popup to open it in a new tab. This tab won't close.
 * For firfox, the addon will ask for permission every time you open a webpage. You can right-click on the addon to allow the addon for all content of the currently open domain
 
-[![Setup and Demo video](https://i.imgur.com/uECrI0G.png)](https://www.youtube.com/watch?v=Cek_NIIUSBI)
-
 ## License
 
 * MIT (c) Johannes Deml - see [LICENSE](./LICENSE.md)
