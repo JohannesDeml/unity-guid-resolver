@@ -2,7 +2,7 @@
 
 [![Logo](./docs/preview.png)](https://youtu.be/3Fez_18Jpds)
 
-[![Get GUID Resolver for chrome](https://storage.googleapis.com/web-dev-uploads/image/WlD8wC6g8khYWPJUsQceQkhXSlv1/UV4C4ybeBTsZt43U4xis.png)](https://chromewebstore.google.com/detail/unity-guid-resolver/gjeokenlchlhgjnnaolbemkcmdigpnjd) [![Get GUID Resolver for firefox](https://extensionworkshop.com/assets/img/documentation/publish/get-the-addon-178x60px.dad84b42.png)](https://addons.mozilla.org/en-US/firefox/addon/unity-guid-resolver/)
+[![Get GUID Resolver for Chrome](https://storage.googleapis.com/web-dev-uploads/image/WlD8wC6g8khYWPJUsQceQkhXSlv1/UV4C4ybeBTsZt43U4xis.png)](https://chromewebstore.google.com/detail/unity-guid-resolver/gjeokenlchlhgjnnaolbemkcmdigpnjd) [![Get GUID Resolver for Firefox](https://extensionworkshop.com/assets/img/documentation/publish/get-the-addon-178x60px.dad84b42.png)](https://addons.mozilla.org/en-US/firefox/addon/unity-guid-resolver/) [![Get GUID Resolver for Edge](https://i.imgur.com/f7nFYgc.png)](https://microsoftedge.microsoft.com/addons/detail/unity-guid-resolver/hddepakklfkmcafkkbebgblbcekbippf)
 
 [![](https://img.shields.io/github/release-date/JohannesDeml/unity-guid-resolver.svg)](https://github.com/JohannesDeml/unity-guid-resolver/releases) [![openupm](https://img.shields.io/npm/v/com.jd.guidresolver?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.jd.guidresolver/)
 
@@ -21,6 +21,7 @@ This repo is experimental and was created out of the need to have a better exper
 
 - [x] [Chrome](https://chromewebstore.google.com/detail/unity-guid-resolver/gjeokenlchlhgjnnaolbemkcmdigpnjd)
 - [x] [Firefox](https://addons.mozilla.org/en-US/firefox/addon/unity-guid-resolver/)
+- [x] [Edge](https://microsoftedge.microsoft.com/addons/detail/unity-guid-resolver/hddepakklfkmcafkkbebgblbcekbippf) 
 - [ ] Safari
 
 ### Supported Pages
