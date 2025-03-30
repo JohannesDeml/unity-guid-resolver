@@ -7,16 +7,17 @@
     body {
       font-family: Arial, sans-serif;
       padding: 8px;
-      min-width: 250px;
+      min-width: 300px;
     }
 
     h3 {
       color: #333;
+      margin-bottom: 12px;
     }
 
-    #storedItem,
     #status {
-      margin-bottom: 8px;
+      margin: 8px 0;
+      color: #666;
     }
 
     button {
@@ -53,16 +54,93 @@
       color: #57ae41;
       background-color: white;
     }
+
+    .file-list {
+      margin: 10px 0;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .file-item {
+      padding: 8px;
+      border: 1px solid #ddd;
+      margin-bottom: 4px;
+      border-radius: 4px;
+      position: relative;
+    }
+
+    .file-item .delete-btn {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #ff4444;
+      color: white;
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+      padding: 0;
+      font-size: 16px;
+      border-radius: 50%;
+      margin: 0;
+    }
+
+    .file-item .delete-btn:hover {
+      background-color: #cc0000;
+    }
+
+    .total-entries {
+      font-weight: bold;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid #ddd;
+    }
+
+    .upload-area {
+      border: 2px dashed #4CAF50;
+      border-radius: 4px;
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
+      margin-bottom: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .upload-area.drag-over {
+      background-color: #e8f5e9;
+      border-color: #2e7d32;
+    }
+
+    .upload-area p {
+      margin: 0;
+      color: #666;
+    }
+
+    .upload-area input[type="file"] {
+      display: none;
+    }
+
+    .upload-icon {
+      font-size: 24px;
+      color: #4CAF50;
+      margin-bottom: 8px;
+    }
   </style>
 </head>
 
 <body>
   <h3>GUID Mapping</h3>
   <button id="optionsButton" class="cog">&#9881;</button>
-  <div id="storedItem"></div>
-  <input type="file" id="jsonFile" accept=".json">
-  <button id="uploadButton">Select</button>
+
+  <div class="upload-area" id="uploadArea">
+    <div class="upload-icon">&#8679;</div>
+    <p>Drop JSON file here or click to select</p>
+    <input type="file" id="jsonFile" accept=".json">
+  </div>
   <div id="status"></div>
+  <div id="fileList" class="file-list"></div>
+  <div id="totalEntries" class="total-entries"></div>
 
   <h3>Page tools</h3>
   <button id="updatePageButton">Update Labels</button>
