@@ -10,9 +10,17 @@ namespace JD.GuidResolver.Editor
 	public class GuidMapping
 	{
 		/// <summary>
-		/// Product name of the project to give context in the extension what mapping is loaded
+		/// Identifier of the file, can be the project name or some other identifier
 		/// </summary>
 		public string identifier;
+		/// <summary>
+		/// Product name (meta information)
+		/// </summary>
+		public string projectName;
+		/// <summary>
+		/// Version of the project (meta information)
+		/// </summary>
+		public string projectVersion;
 		/// <summary>
 		/// Sortable date string when the mapping was created
 		/// </summary>
@@ -26,9 +34,8 @@ namespace JD.GuidResolver.Editor
 		/// </summary>
 		public Dictionary<string, GuidMappingEntry> mapping;
 
-		public GuidMapping(string identifier)
+		public GuidMapping()
 		{
-			this.identifier = identifier;
 			this.creationDate = DateTime.Now.ToString("s");
 			this.fileVersion = GuidMappingGenerator.FileVersion;
 			this.mapping = new Dictionary<string, GuidMappingEntry>();
