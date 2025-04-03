@@ -46,13 +46,26 @@
       right: 10px;
       background: none;
       border: none;
-      font-size: 20px;
+      width: 24px;
+      height: 24px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
+      transition: color 0.2s ease;
+    }
+
+    .cog svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      transition: stroke 0.2s ease;
     }
 
     .cog:hover {
       color: #57ae41;
-      background-color: white;
+      background-color: inherit;
     }
 
     .file-list {
@@ -76,14 +89,22 @@
       transform: translateY(-50%);
       background-color: #ff4444;
       color: white;
-      width: 20px;
-      height: 20px;
-      line-height: 20px;
-      text-align: center;
+      width: 24px;
+      height: 24px;
       padding: 0;
-      font-size: 16px;
       border-radius: 50%;
       margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      cursor: pointer;
+    }
+
+    .file-item .delete-btn svg {
+      width: 16px;
+      height: 16px;
+      stroke: white;
     }
 
     .file-item .delete-btn:hover {
@@ -131,7 +152,13 @@
 
 <body>
   <h3>GUID Mapping</h3>
-  <button id="optionsButton" class="cog">&#9881;</button>
+  <button id="optionsButton" class="cog">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" />
+      <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+    </svg>
+  </button>
 
   <div class="upload-area" id="uploadArea">
     <div class="upload-icon">&#8679;</div>
