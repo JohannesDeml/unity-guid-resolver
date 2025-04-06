@@ -164,11 +164,14 @@ function updateFileList() {
 
     fileListDiv.innerHTML = files.map(([fileId, fileData]) => {
       return `
-        <div class="file-item">
+        <div class="file-item" data-file-id="${fileId}">
           <div>${fileData.fileName}</div>
           <div style="font-size: 0.8em; color: #666;">${fileData.creationDate}</div>
           ${fileData.projectName ? `<div style="font-size: 0.8em; color: #666;">${fileData.projectName} ${fileData.projectVersion ? `- ${fileData.projectVersion}` : ''}</div>` : ''}
-          <div style="font-size: 0.8em;">${Object.keys(fileData.mapping).length} entries</div>
+          <div style="font-size: 0.8em;">
+            ${Object.keys(fileData.mapping).length} entries
+            <a href="#" class="download-link" data-file-id="${fileId}">Download</a>
+          </div>
           <button class="delete-btn" data-file-id="${fileId}">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -186,6 +189,14 @@ function updateFileList() {
     fileListDiv.querySelectorAll('.delete-btn').forEach(btn => {
       btn.addEventListener('click', function() {
         deleteFile(this.dataset.fileId);
+      });
+    });
+
+    // Add download link listeners
+    fileListDiv.querySelectorAll('.download-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        downloadFileData(this.dataset.fileId);
       });
     });
   });
@@ -208,6 +219,35 @@ function updateLabelsOnPage() {
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     var activeTab = tabs[0];
     chrome.tabs.sendMessage(activeTab.id, { message: "addGuidLabels" }, function (response) { });
+  });
+}
+
+function downloadFileData(fileId) {
+  chrome.storage.local.get('guidFiles', function(data) {
+    if (!data.guidFiles || !data.guidFiles[fileId]) return;
+
+    const fileData = data.guidFiles[fileId];
+    const jsonContent = JSON.stringify({
+      creationDate: fileData.creationDate,
+      projectName: fileData.projectName,
+      projectVersion: fileData.projectVersion,
+      mapping: fileData.mapping
+    }, null, 2);
+
+    const blob = new Blob([jsonContent], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = fileData.fileName;
+    document.body.appendChild(a);
+    a.click();
+
+    // Cleanup
+    setTimeout(() => {
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }, 0);
   });
 }
 
