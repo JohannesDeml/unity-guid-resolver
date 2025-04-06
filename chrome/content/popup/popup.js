@@ -89,6 +89,9 @@ function handleFileUpload(file) {
           guidFiles[fileId] = {
             fileName: file.name,
             creationDate: parsedData.creationDate,
+            uploadDate: new Date().toISOString(),
+            projectName: parsedData.projectName,
+            projectVersion: parsedData.projectVersion,
             mapping: parsedData.mapping
           };
 
@@ -153,6 +156,9 @@ function updateFileList() {
     }
 
     var files = Object.entries(data.guidFiles);
+    // Sort files by creation date in descending order (newest first)
+    files.sort((a, b) => new Date(b[1].creationDate) - new Date(a[1].creationDate));
+
     var totalEntries = data.guidMapping && data.guidMapping.mapping ?
       Object.keys(data.guidMapping.mapping).length : 0;
 
@@ -161,6 +167,7 @@ function updateFileList() {
         <div class="file-item">
           <div>${fileData.fileName}</div>
           <div style="font-size: 0.8em; color: #666;">${fileData.creationDate}</div>
+          ${fileData.projectName ? `<div style="font-size: 0.8em; color: #666;">${fileData.projectName} ${fileData.projectVersion ? `- ${fileData.projectVersion}` : ''}</div>` : ''}
           <div style="font-size: 0.8em;">${Object.keys(fileData.mapping).length} entries</div>
           <button class="delete-btn" data-file-id="${fileId}">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
