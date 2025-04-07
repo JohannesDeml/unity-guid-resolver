@@ -99,6 +99,70 @@
       justify-content: center;
       border: none;
       cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .loading {
+      cursor: wait !important;
+    }
+
+    .loading svg {
+      display: none;
+    }
+
+    .file-item .delete-btn.loading {
+      background-color: #ff8888;
+    }
+
+    .file-item .delete-btn.loading::after {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border: 2px solid #ffffff;
+      border-top: 2px solid transparent;
+      border-radius: 50%;
+      animation: delete-spin 1s linear infinite;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    @keyframes delete-spin {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    .upload-area.loading {
+      background-color: #e8f5e9;
+      border-color: #2e7d32;
+    }
+
+    .upload-area .loading-content {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      height: 100%;
+      justify-content: center;
+    }
+
+    .upload-area.loading .loading-content, .upload-area.error .loading-content {
+      display: flex;
+    }
+
+    .upload-area .spinner {
+      width: 24px;
+      height: 24px;
+      border: 2px solid #4CAF50;
+      border-top: 2px solid transparent;
+      border-radius: 50%;
+      animation: upload-spin 1s linear infinite;
+    }
+
+    @keyframes upload-spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
     .file-item .delete-btn svg {
@@ -126,6 +190,37 @@
       cursor: pointer;
       margin-bottom: 12px;
       transition: all 0.3s ease;
+      height: 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .upload-area .upload-prompt {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .upload-area.loading .upload-prompt, .upload-area.error .upload-prompt {
+      display: none;
+    }
+
+    .upload-area .status-text {
+      color: #4CAF50;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .upload-area.error {
+      border-color: #ff4444;
+    }
+
+    .upload-area.error .status-text {
+      color: #ff4444;
     }
 
     .upload-area.drag-over {
@@ -145,7 +240,7 @@
     .upload-icon {
       font-size: 24px;
       color: #4CAF50;
-      margin-bottom: 8px;
+      line-height: 1;
     }
   </style>
 </head>
@@ -161,11 +256,16 @@
   </button>
 
   <div class="upload-area" id="uploadArea">
-    <div class="upload-icon">&#8679;</div>
-    <p>Drop JSON file here or click to select</p>
+    <div class="upload-prompt">
+      <div class="upload-icon">&#8679;</div>
+      <p>Drop JSON file here or click to select</p>
+    </div>
+    <div class="loading-content">
+      <div class="spinner"></div>
+      <div class="status-text"></div>
+    </div>
     <input type="file" id="jsonFile" accept=".json">
   </div>
-  <div id="status"></div>
   <div id="fileList" class="file-list"></div>
   <div id="totalEntries" class="total-entries"></div>
 

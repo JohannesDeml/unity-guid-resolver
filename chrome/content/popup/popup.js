@@ -61,22 +61,29 @@ function setupFileUpload() {
 }
 
 function handleFileUpload(file) {
-  const statusDiv = document.getElementById('status');
   const uploadArea = document.getElementById('uploadArea');
+  const statusText = uploadArea.querySelector('.status-text');
+
+  // Add loading class to the upload area to show the status text & loading spinner
 
   if (!file.name.toLowerCase().endsWith('.json')) {
-    statusDiv.innerText = 'Please select a JSON file.';
+    uploadArea.classList.add('error');
+    statusText.innerText = 'Please select a JSON file.';
+    setTimeout(() => {
+      statusText.innerText = '';
+      uploadArea.classList.remove('error');
+    }, 2000);
     return;
   }
 
-  statusDiv.innerText = 'Loading JSON file...';
-  uploadArea.classList.add('disabled');
+  uploadArea.classList.add('loading');
+  statusText.innerText = 'Loading JSON file...';
 
   const reader = new FileReader();
 
   reader.onload = function (e) {
     try {
-      statusDiv.innerText = 'Parsing JSON file...';
+      statusText.innerText = 'Parsing JSON file ' + file.name + '...';
       const parsedData = JSON.parse(e.target.result);
 
       if (parsedData && parsedData.hasOwnProperty('mapping')) {
@@ -96,24 +103,38 @@ function handleFileUpload(file) {
           };
 
           chrome.storage.local.set({ 'guidFiles': guidFiles }, function() {
+            var error = chrome.runtime.lastError;
+            if (error) {
+               alert('JSON file upload error: ' + (error.message || JSON.stringify(error)));
+            }
             generateMergedMapping(function() {
-              statusDiv.innerText = 'JSON file uploaded successfully';
+              var error = chrome.runtime.lastError;
+              if (error) {
+                statusText.innerText = 'JSON file upload error: ' + (error.message || JSON.stringify(error));
+              } else {
+                statusText.innerText = 'JSON file uploaded successfully';
+                setTimeout(() => {
+                  uploadArea.classList.remove('loading');
+                  statusText.innerText = '';
+                }, 1000);
+              }
               updateFileList();
             });
           });
         });
       } else {
-        statusDiv.innerText = 'JSON file must contain a "mapping" field in the root.';
+        statusText.innerText = 'JSON file must contain a "mapping" field in the root.';
+        uploadArea.classList.remove('loading');
       }
     } catch (error) {
-      statusDiv.innerText = 'Error parsing JSON file: ' + error.message;
+      statusText.innerText = 'Error parsing JSON file: ' + error.message;
+      uploadArea.classList.remove('loading');
     }
-    uploadArea.classList.remove('disabled');
   };
 
   reader.onerror = function() {
-    statusDiv.innerText = 'Error reading file';
-    uploadArea.classList.remove('disabled');
+    statusText.innerText = 'Error reading file';
+    uploadArea.classList.remove('loading');
   };
 
   reader.readAsText(file);
@@ -188,6 +209,8 @@ function updateFileList() {
     // Add delete button listeners
     fileListDiv.querySelectorAll('.delete-btn').forEach(btn => {
       btn.addEventListener('click', function() {
+        const button = this;
+        button.classList.add('loading');
         deleteFile(this.dataset.fileId);
       });
     });
