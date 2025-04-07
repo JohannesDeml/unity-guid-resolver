@@ -17,7 +17,7 @@
     "page": "content/popup/popup.html",
     "open_in_tab": true
   },
-  "permissions": ["storage", "activeTab", "tabs", "scripting"],
+  "permissions": ["storage", "activeTab", "tabs", "scripting", "unlimitedStorage"],
   "host_permissions": ["<all_urls>" ],
   "background": {
     "service_worker": "content/scripts/background.js"

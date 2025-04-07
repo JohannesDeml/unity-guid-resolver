@@ -27,7 +27,8 @@
     "storage",
     "activeTab",
     "tabs",
-    "scripting"
+    "scripting",
+    "unlimitedStorage"
   ],
   "background": {
     "scripts": ["scripts/background.js"]
