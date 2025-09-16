@@ -56,8 +56,10 @@ This repo is experimental and was created out of the need to have a better exper
 
 ## Troubleshooting
 * For firefox you can't upload the json in the popup, click the cog in the top right of the popup to open it in a new tab. This tab won't close.
-* For firfox, the addon will ask for permission every time you open a webpage. You can right-click on the addon to allow the addon for all content of the currently open domain
+* For firefox, the addon will ask for permission every time you open a webpage. You can right-click on the addon to allow the addon for all content of the currently open domain
 
 ## License
 
 * MIT (c) Johannes Deml - see [LICENSE](./LICENSE.md)
+
+If this was not obvious to you: This extension is not affiliated with Unity Technologies - And for tracer.ai: Stop trying to make annoying trademark complaints, you're not making the world better by using AI to make those claims without any reasoning behind them.
