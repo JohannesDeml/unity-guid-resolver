@@ -19,7 +19,7 @@ namespace JD.GuidResolver.Editor
 {
 	/// <summary>
 	/// Generate a mapping of all GUIDs in the project to their file meta data
-	/// Used for resolving GUIDs in the web with the extension Unity GUID Resolver
+	/// Used for resolving GUIDs in the web with the extension GUID Resolver for Unity
 	/// </summary>
 	public static class GuidMappingGenerator
 	{

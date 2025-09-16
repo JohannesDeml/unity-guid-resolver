@@ -1,4 +1,4 @@
-# Unity GUID Resolver
+# GUID Resolver for Unity
 
 [![Logo](./docs/preview.png)](https://youtu.be/3Fez_18Jpds)
 
@@ -21,7 +21,7 @@ This repo is experimental and was created out of the need to have a better exper
 
 - [x] [Chrome](https://chromewebstore.google.com/detail/unity-guid-resolver/gjeokenlchlhgjnnaolbemkcmdigpnjd)
 - [x] [Firefox](https://addons.mozilla.org/en-US/firefox/addon/unity-guid-resolver/)
-- [x] [Edge](https://microsoftedge.microsoft.com/addons/detail/unity-guid-resolver/hddepakklfkmcafkkbebgblbcekbippf) 
+- [x] [Edge](https://microsoftedge.microsoft.com/addons/detail/unity-guid-resolver/hddepakklfkmcafkkbebgblbcekbippf)
 - [ ] Safari
 
 ### Supported Pages
