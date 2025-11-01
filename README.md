@@ -2,13 +2,13 @@
 
 [![Logo](./docs/preview.png)](https://youtu.be/3Fez_18Jpds)
 
-[![Get GUID Resolver for Chrome](https://developer.chrome.com/static/docs/webstore/branding/image/UV4C4ybeBTsZt43U4xis.png)](https://chromewebstore.google.com/detail/unity-guid-resolver/gjeokenlchlhgjnnaolbemkcmdigpnjd) [![Get GUID Resolver for Firefox](https://extensionworkshop.com/assets/img/documentation/publish/get-the-addon-178x60px.dad84b42.png)](https://addons.mozilla.org/en-US/firefox/addon/unity-guid-resolver/) [![Get GUID Resolver for Edge](https://i.imgur.com/f7nFYgc.png)](https://microsoftedge.microsoft.com/addons/detail/unity-guid-resolver/hddepakklfkmcafkkbebgblbcekbippf)
+[![Get GUID Resolver for Chrome](https://developer.chrome.com/static/docs/webstore/branding/image/UV4C4ybeBTsZt43U4xis.png)](https://chromewebstore.google.com/detail/unity-guid-resolver/gjeokenlchlhgjnnaolbemkcmdigpnjd) [![Get GUID Resolver for Firefox](https://extensionworkshop.com/assets/img/documentation/publish/get-the-addon-178x60px.dad84b42.png)](https://addons.mozilla.org/en-US/firefox/addon/guid-resolver-for-unity/) [![Get GUID Resolver for Edge](https://i.imgur.com/f7nFYgc.png)](https://microsoftedge.microsoft.com/addons/detail/unity-guid-resolver/hddepakklfkmcafkkbebgblbcekbippf)
 
 [![](https://img.shields.io/github/release-date/JohannesDeml/unity-guid-resolver.svg)](https://github.com/JohannesDeml/unity-guid-resolver/releases) [![openupm](https://img.shields.io/npm/v/com.jd.guidresolver?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.jd.guidresolver/)
 
 *Resolve GUIDs to their asset names on the web*
 
-> [!NOTE]  
+> [!NOTE]
 > Sadly the extensions got taken down on the Chrome and Microsoft edge stores due to trademark infringement claims (from Enftracer.ai acting on behalf of Unity) even after changing the logo and name to make it clear that this is not from Unity. Well, if you're on chrome, you will install the extension manually, [I'm too annoyed by fighting this useless battle](https://discussions.unity.com/t/copyright-infringement-claim-from-tracer-ai-for-open-source-tool/1683668).
 
 This repo was created out of the need to have a better experience doing PR reviews of unity assets. Since GUIDs are not easily readable, adding information on the asset name it is actually liking to gives a lot more context on changes.
