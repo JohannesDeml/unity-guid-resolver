@@ -8,7 +8,10 @@
 
 *Resolve GUIDs to their asset names on the web*
 
-This repo is experimental and was created out of the need to have a better experience doing PR reviews of unity assets. Since GUIDs are not easily readable, adding information on the asset name it is actually liking to gives a lot more context on changes.
+> [!NOTE]  
+> Sadly the extensions got taken down on the Chrome and Microsoft edge stores due to trademark infringement claims (from Enftracer.ai acting on behalf of Unity) even after changing the logo and name to make it clear that this is not from Unity. Well, if you're on chrome, you will install the extension manually, [I'm too annoyed by fighting this useless battle](https://discussions.unity.com/t/copyright-infringement-claim-from-tracer-ai-for-open-source-tool/1683668).
+
+This repo was created out of the need to have a better experience doing PR reviews of unity assets. Since GUIDs are not easily readable, adding information on the asset name it is actually liking to gives a lot more context on changes.
 
 ## Features
 
@@ -62,4 +65,4 @@ This repo is experimental and was created out of the need to have a better exper
 
 * MIT (c) Johannes Deml - see [LICENSE](./LICENSE.md)
 
-If this was not obvious to you: This extension is not affiliated with Unity Technologies - And for tracer.ai: Stop trying to make annoying trademark complaints, you're not making the world better by using AI to make those claims without any reasoning behind them.
+If this was not obvious to you: This extension is not affiliated with Unity Technologies - And for enftracer.ai: Congratulations, you made it quite a bit more annoying and cumersome to install this tool, thanks for nothing.
