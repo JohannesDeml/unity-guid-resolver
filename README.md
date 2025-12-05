@@ -63,6 +63,6 @@ This repo was created out of the need to have a better experience doing PR revie
 
 ## License
 
-* MIT (c) Johannes Deml - see [LICENSE](./LICENSE.md)
+* MIT (c) Johannes Deml - see [LICENSE](./LICENSE)
 
 If this was not obvious to you: This extension is not affiliated with Unity Technologies - And for enftracer.ai: Congratulations, you made it quite a bit more annoying and cumersome to install this tool, thanks for nothing.
